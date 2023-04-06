@@ -3,6 +3,7 @@ from flask import Flask
 from flask_marshmallow import Marshmallow
 from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
+from flask_swagger_ui import get_swaggerui_blueprint
 
 
 # Controllers
@@ -10,6 +11,18 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 app = Flask(__name__)
+
+#swagger 
+SWAGGER_URL = '/api/docs'
+API_URL = '/static/swagger.json'
+swaggerui_blueprint = get_swaggerui_blueprint(
+    SWAGGER_URL,
+    API_URL,
+    config={
+        'app_name': "WorkBook"
+    }
+)   
+app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
 api = Api(app, prefix='/api/v1')
 
 basedir = os.path.abspath(os.path.dirname(__file__))
