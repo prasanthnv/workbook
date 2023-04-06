@@ -1,5 +1,5 @@
-from workbook.controllers.user import UserController, UserListController
 from workbook.app import api
+from workbook.controllers.user import UserController, UserListController
 # initiate routes for workbook
 
 
