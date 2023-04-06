@@ -10,7 +10,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 app = Flask(__name__)
-api = Api(app)
+api = Api(app, prefix='/api/v1')
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
